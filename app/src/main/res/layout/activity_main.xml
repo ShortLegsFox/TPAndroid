@@ -44,7 +44,8 @@
         android:id="@+id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal">
     </ProgressBar>
     <SeekBar
         android:layout_width="match_parent"
