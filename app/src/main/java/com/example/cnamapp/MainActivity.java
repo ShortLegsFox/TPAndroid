@@ -23,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeSeekBarAndProgressBar();
+    }
+
+    private void initializeSeekBarAndProgressBar() {
         seekBar = findViewById(R.id.seekBar);
         progressBar = findViewById(R.id.progressBar);
 
@@ -33,10 +37,14 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) { }
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // Optional: You can add actions to perform when the user starts moving the SeekBar
+            }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) { }
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                // Optional: You can add actions to perform when the user stops moving the SeekBar
+            }
         });
     }
 

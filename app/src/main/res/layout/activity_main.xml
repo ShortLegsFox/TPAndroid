@@ -54,7 +54,16 @@
         android:layout_below="@id/progressBar">
     </SeekBar>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/buttonCount"
+        android:layout_centerHorizontal="true"
+        android:text="0">
+    </TextView>
     <Button
+        android:id="@+id/buttonCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
