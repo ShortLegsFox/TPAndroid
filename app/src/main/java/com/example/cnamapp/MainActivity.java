@@ -2,6 +2,7 @@ package com.example.cnamapp;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar m_progressBar;
     private TextView m_textCounter;
     private Button m_buttonCounter;
+    private Handler handler = new Handler();
+    private int m_counter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
         m_buttonCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                incrementTextView();
+                //incrementTextView();
+                autoIncrementTextView();
             }
         });
     }
@@ -70,5 +74,17 @@ public class MainActivity extends AppCompatActivity {
         int currentValue = Integer.parseInt(m_textCounter.getText().toString());
         int newValue = currentValue + 1;
         m_textCounter.setText(String.valueOf(newValue));
+    }
+    private void autoIncrementTextView(){
+        if (m_counter < 100) {
+            m_textCounter.setText(String.valueOf(m_counter));
+            m_counter += 1;
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    autoIncrementTextView();
+                }
+            }, 1000); // Delay of 1000 milliseconds (1 second)
+        }
     }
 }
