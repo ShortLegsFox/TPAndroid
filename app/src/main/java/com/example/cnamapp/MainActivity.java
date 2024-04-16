@@ -29,18 +29,18 @@ public class MainActivity extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressBar.setProgress(progress);
+                updateProgressBar(progress);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                // Optional: You can add actions to perform when the user starts moving the SeekBar
-            }
+            public void onStartTrackingTouch(SeekBar seekBar) { }
 
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                // Optional: You can add actions to perform when the user stops moving the SeekBar
-            }
+            public void onStopTrackingTouch(SeekBar seekBar) { }
         });
+    }
+
+    private void updateProgressBar(int progress) {
+        progressBar.setProgress(progress);
     }
 }

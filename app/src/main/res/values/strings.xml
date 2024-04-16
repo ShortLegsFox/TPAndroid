@@ -3,4 +3,5 @@
     <string name="nom">BELLOT</string>
     <string name="prenom">Ian</string>
     <string name="progressbartext">Progress</string>
+    <string name="buttonText">SHOW</string>
 </resources>
