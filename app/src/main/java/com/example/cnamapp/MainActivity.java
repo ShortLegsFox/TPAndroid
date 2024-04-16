@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 public void run() {
                     autoIncrementTextView();
                 }
-            }, 1000); // Delay of 1000 milliseconds (1 second)
+            }, 1000);
         }
     }
 }
