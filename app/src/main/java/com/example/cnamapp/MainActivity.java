@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Handler handler = new Handler();
     private int m_counter;
     private Timer m_myTimer;
+    private MyHandler m_handler;
 
 
     private class MyHandler extends Handler {
@@ -43,14 +44,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        m_textCounter = findViewById(R.id.textCounter);
+        m_buttonCounter = findViewById(R.id.buttonCounter);
+        m_seekBar = findViewById(R.id.seekBar);
+        m_progressBar = findViewById(R.id.progressBar);
+        m_myTimer = new Timer();
+        m_handler = new MyHandler();
+
         initializeSeekBarAndProgressBar();
         initializeCounter();
     }
 
     private void initializeSeekBarAndProgressBar() {
-        m_seekBar = findViewById(R.id.seekBar);
-        m_progressBar = findViewById(R.id.progressBar);
-
         m_seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -66,9 +71,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initializeCounter() {
-        m_textCounter = findViewById(R.id.textCounter);
-        m_buttonCounter = findViewById(R.id.buttonCounter);
-
         m_buttonCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void autoIncrementTextViewWithTimer() {
-        m_myTimer = new Timer();
         m_myTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
