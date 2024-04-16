@@ -74,10 +74,8 @@ public class MainActivity extends AppCompatActivity {
         m_buttonCounter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //incrementTextView();
-                //autoIncrementTextViewHandler();
                 //autoIncrementTextViewWithTimer();
-                autoIncrementTextViewWithTimerBis();
+                autoIncrementTextViewWithTimerMyHandler();
             }
         });
     }
@@ -90,19 +88,6 @@ public class MainActivity extends AppCompatActivity {
         int currentValue = Integer.parseInt(m_textCounter.getText().toString());
         int newValue = currentValue + 1;
         m_textCounter.setText(String.valueOf(newValue));
-    }
-
-    private void autoIncrementTextViewHandler(){
-        if (m_counter < 100) {
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    m_counter += 1;
-                    m_handler.sendEmptyMessage(0);
-                    //autoIncrementTextViewHandler();
-                }
-            }, 1000);
-        }
     }
 
     private void autoIncrementTextViewWithTimer() {
@@ -120,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         }, 0, 1000);
     }
 
-    private void autoIncrementTextViewWithTimerBis() {
+    private void autoIncrementTextViewWithTimerMyHandler() {
         m_myTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
