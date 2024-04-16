@@ -75,8 +75,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //incrementTextView();
-                //autoIncrementTextView();
-                autoIncrementTextViewWithTimer();
+                //autoIncrementTextViewHandler();
+                //autoIncrementTextViewWithTimer();
+                autoIncrementTextViewWithTimerBis();
             }
         });
     }
@@ -93,12 +94,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void autoIncrementTextViewHandler(){
         if (m_counter < 100) {
-            m_textCounter.setText(String.valueOf(m_counter));
-            m_counter += 1;
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    autoIncrementTextViewHandler();
+                    m_counter += 1;
+                    m_handler.sendEmptyMessage(0);
+                    //autoIncrementTextViewHandler();
                 }
             }, 1000);
         }
@@ -115,6 +116,22 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 m_counter++;
+            }
+        }, 0, 1000);
+    }
+
+    private void autoIncrementTextViewWithTimerBis() {
+        m_myTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        m_counter++;
+                        m_handler.sendEmptyMessage(0);
+                        updateProgressBar(m_counter);
+                    }
+                });
             }
         }, 0, 1000);
     }
