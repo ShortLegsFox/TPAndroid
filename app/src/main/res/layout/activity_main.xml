@@ -16,18 +16,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dip"
+            android:paddingStart="10dip"
             android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="BELLOT"
+                android:text="@string/nom"
                 android:textColor="@color/white">
             </TextView>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Ian"
+                android:text="@string/prenom"
                 android:textColor="@color/white">
             </TextView>
         </LinearLayout>
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/progressBar"
         android:layout_centerInParent="true"
-        android:text="Progress">
+        android:text="@string/progressbartext">
     </TextView>
     <ProgressBar
         android:id="@+id/progressBar"
