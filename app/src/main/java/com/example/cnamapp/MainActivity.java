@@ -17,6 +17,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity {
 
     private SeekBar m_seekBar;
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button m_buttonCounter;
     private Handler handler = new Handler();
     private int m_counter;
+    private Timer m_myTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //incrementTextView();
-                autoIncrementTextView();
+                //autoIncrementTextView();
+                autoIncrementTextViewWithTimer();
             }
         });
     }
@@ -86,5 +91,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }, 1000);
         }
+    }
+
+    private void autoIncrementTextViewWithTimer() {
+        m_myTimer = new Timer();
+        m_myTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        m_textCounter.setText(String.valueOf(m_counter));
+                    }
+                });
+                m_counter++;
+            }
+        }, 0, 1000);
     }
 }
