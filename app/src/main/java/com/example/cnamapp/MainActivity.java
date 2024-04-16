@@ -3,6 +3,7 @@ package com.example.cnamapp;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -30,6 +31,13 @@ public class MainActivity extends AppCompatActivity {
     private int m_counter;
     private Timer m_myTimer;
 
+
+    private class MyHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            m_textCounter.setText(String.valueOf(m_counter));
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,14 +88,15 @@ public class MainActivity extends AppCompatActivity {
         int newValue = currentValue + 1;
         m_textCounter.setText(String.valueOf(newValue));
     }
-    private void autoIncrementTextView(){
+
+    private void autoIncrementTextViewHandler(){
         if (m_counter < 100) {
             m_textCounter.setText(String.valueOf(m_counter));
             m_counter += 1;
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    autoIncrementTextView();
+                    autoIncrementTextViewHandler();
                 }
             }, 1000);
         }
